@@ -34,7 +34,7 @@ class ListAndItemModelsTest(TestCase):
         first_saved_item = saved_items[0]
         second_saved_item = saved_items[1]
 
-        self.assertIn(first_saved_item.text, 'The first (ever) item')
+        self.assertIn(first_saved_item.text, 'The first (ever) list item')
         self.assertEqual(first_saved_item.list, list_)
 
         self.assertIn(second_saved_item.text, 'Item the second')
@@ -47,8 +47,9 @@ class ListViewTest(TestCase):
         self.assertTemplateUsed(response, 'list.html')
 
     def test_displays_all_items(self):
-        Item.objects.create(text='itemey 1')
-        Item.objects.create(text='itemey 2')
+        list_ = List.objects.create()
+        Item.objects.create(text='itemey 1', list=list_)
+        Item.objects.create(text='itemey 2', list=list_)
 
         response = self.client.get('/lists/the-only-list-in-the-world/')
 
