@@ -6,3 +6,4 @@ __pycache__
 *.pyc
 functional_tests.py
 /static
+python-tdd-book.sublime-project
