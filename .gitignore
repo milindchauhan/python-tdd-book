@@ -7,3 +7,4 @@ __pycache__
 functional_tests.py
 /static
 python-tdd-book.sublime-project
+.env
