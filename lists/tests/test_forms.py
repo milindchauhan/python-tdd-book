@@ -25,3 +25,4 @@ class ItemFormTest(TestCase):
         self.assertEqual(new_item, Item.objects.first())
         self.assertEqual(new_item.text, 'do me')
         self.assertEqual(new_item.list, list_)
+
