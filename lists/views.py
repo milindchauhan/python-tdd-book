@@ -3,7 +3,7 @@ User = get_user_model()
 from django.shortcuts import redirect, render
 from django.core.exceptions import ValidationError
 from lists.models import Item, List
-from lists.forms import ExistingListItemForm, ItemForm
+from lists.forms import ExistingListItemForm, ItemForm, NewListForm
 
 # Create your views here.
 
@@ -30,6 +30,11 @@ def new_list(request):
         return redirect(list_)
     else:
         return render(request, 'home.html', {"form": form})
+
+def new_list2(request):
+    form = NewListForm(data=request.POST)
+    list_ = form.save(owner=request.user)
+    return redirect(list_)
 
 def my_lists(request, email):
     owner = User.objects.get(email=email)
