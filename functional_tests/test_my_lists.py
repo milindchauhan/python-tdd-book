@@ -49,7 +49,7 @@ class MyListsTest(FunctionalTest):
         second_list_url = self.browser.current_url
 
         # Under "my lists", her new list appears
-        sel.browser.find_element_by_link_text('My lists').click()
+        self.browser.find_element_by_link_text('My lists').click()
         self.wait_for(
             lambda: self.browser.find_element_by_link_text('Click cows')
         )
