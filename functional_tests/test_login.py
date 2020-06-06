@@ -6,6 +6,7 @@ from django.core import mail
 from selenium.webdriver.common.keys import Keys
 
 from .base import FunctionalTest
+from .list_page import ListPage
 
 
 SUBJECT = 'Your login link for Superlists'
@@ -53,8 +54,7 @@ class LoginTest(FunctionalTest):
             test_email = 'edith@example.com'
 
         self.browser.get(self.live_server_url)
-        self.browser.find_element_by_name('email').send_keys(test_email)
-        self.browser.find_element_by_name('email').send_keys(Keys.ENTER)
+        list_page = ListPage(self).add_email(test_email)
 
         # A message appears telling her an email has been sent
         self.wait_for(lambda: self.assertIn(

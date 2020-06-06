@@ -1,3 +1,4 @@
+from .list_page import ListPage
 from .base import FunctionalTest
 
 
@@ -9,8 +10,9 @@ class MyListsTest(FunctionalTest):
 
         # She goes to the home page and starts a list
         self.browser.get(self.live_server_url)
-        self.add_list_item('Reticulate splines')
-        self.add_list_item('Immanentize eschaton')
+        list_page = ListPage(self)
+        list_page.add_list_item('Reticulate splines')
+        list_page.add_list_item('Immanentize eschaton')
         first_list_url = self.browser.current_url
 
         # She notices a "My lists" link, for the first time.
@@ -28,7 +30,9 @@ class MyListsTest(FunctionalTest):
 
         # She decides to start another list, just to see
         self.browser.get(self.live_server_url)
-        self.add_list_item('Click cows')
+        list_page = ListPage(self)
+        list_page.add_list_item('Click cows')
+        # self.add_list_item('Click cows')
         second_list_url = self.browser.current_url
 
         # Under "my lists", her new list appears
