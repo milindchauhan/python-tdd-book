@@ -39,7 +39,7 @@ class SharingTest(FunctionalTest):
 
         # Oniciferous now goes to the lists page with his browser
         self.browser = oni_browser
-        MyListsPage(self).got_to_my_lists_page()
+        MyListsPage(self).go_to_my_lists_page()
 
         # He sees Edith's list in there!
         self.browser.find_element_by_link_text('Get help').click()
@@ -52,12 +52,7 @@ class SharingTest(FunctionalTest):
         # He adds an item to the list
         list_page.add_list_item('Hi Edith!')
 
-        # random test that I'm adding in
-        self.assertEqual(list_page.test.browser, edith_browser)
-
         # When Edith refreshes the page, she sees Oniciferous's addition
         self.browser = edith_browser
-        # random test I'm adding in
-        self.assertEqual(list_page.test.browser, edith_browser)
         self.browser.refresh()
         list_page.wait_for_row_in_list_table('Hi Edith!', 2)
