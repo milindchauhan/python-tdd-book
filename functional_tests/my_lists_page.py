@@ -1,5 +1,4 @@
 
-
 class MyListsPage:
 
     def __init__(self, test):
@@ -8,7 +7,7 @@ class MyListsPage:
     def go_to_my_lists_page(self):
         self.test.browser.get(self.test.live_server_url)
         self.test.browser.find_element_by_link_text('My lists').click()
-        self.wait_for(lambda: self.assertEqual(
-            self.test.browser.find_element_by_tag_name('h1').text, 'My lists'
+        self.test.wait_for(lambda: self.test.assertEqual(
+            self.test.browser.find_element_by_tag_name('h1').text, 'My Lists'
         ))
         return self
